@@ -30,7 +30,7 @@ Now that you have the files for the chatbot ready, it's time to deploy it online
 4. **Launch Your Chatbot**  
    Click "Deploy" - your AI assistant will be live in minutes!
 
-## Project Structure
+## 📂 Project Structure
 This is what the structure of the repositiry should look like:
 ```
 <Name>/

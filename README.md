@@ -16,7 +16,7 @@ Create personalized Q&A AI chatbots in 3 easy steps:
 - GitHub deployment for the created chatbot
 - Support for multiple LLM models
 
-## Get API Keys  
+## 🔑 Get API Keys  
    - [Groq Cloud API Key](https://console.groq.com/keys) (Free tier available)
    - [HuggingFace Token](https://huggingface.co/settings/tokens) (Use write token)
 
@@ -26,7 +26,7 @@ Create personalized Q&A AI chatbots in 3 easy steps:
 3. **Step 3**: Provide Groq API Key and HuggingFace token and then chat with your bot to verify that it works as you expect. If you wish to change anything, repeat steps 1 and 2.
 4. **Step 4**: Provide a name for the resultant repository that will host the code for your chatbot, click `Deploy to Github` and wait for the success message which will contain the link to the created GitHub repository.
 
-## Next Steps
+## ↗️ Next Steps
 The created GitHub repository will contain further instructions, but basically you have to fork the repository or download the code to then deploy it online, and provide streamlit secrets when you do.
 
 ## 🤝 Contributing
