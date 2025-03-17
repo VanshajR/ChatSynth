@@ -5,7 +5,14 @@ from modules.github_deploy import github_deploy
 import streamlit as st
 
 def main():
-    st.sidebar.title("ChatBot Factory")
+    st.set_page_config(
+        page_title="ChatSynth",
+        page_icon="🤖",
+        layout="centered",
+        initial_sidebar_state="expanded"
+    )
+
+    st.sidebar.title("🤖 ChatSynth")
     step = st.sidebar.radio("Steps", [
         "1. Create Profile",
         "2. Build Knowledge Base",
@@ -13,6 +20,9 @@ def main():
         "4. Deploy to GitHub"
     ])
     
+    st.sidebar.write("Do remember to provide any links as proper URLs (e.g., https://www.google.com)!")
+    st.sidebar.write("If you find this useful, do star the repo and drop a follow!")
+    st.sidebar.write("https://github.com/VanshajR")
     if step == "1. Create Profile":
         json_creator()
     elif step == "2. Build Knowledge Base":
