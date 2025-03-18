@@ -3,6 +3,11 @@ Check out the deployed app here:
 
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatsynth.streamlit.app)
 
+And a demo chatbot here:
+
+[![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://demo-chatsynth.streamlit.app)
+
+
 Create personalized Q&A AI chatbots in 3 easy steps:
 
 1. **Build Profile**: Create structured JSON with user information
