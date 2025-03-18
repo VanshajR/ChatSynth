@@ -7,7 +7,7 @@ import streamlit as st
 def main():
     st.set_page_config(
         page_title="ChatSynth",
-        page_icon="🤖",
+        page_icon="logo.ico",
         layout="centered",
         initial_sidebar_state="expanded"
     )
