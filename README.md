@@ -1,4 +1,6 @@
 # ChatSynth - AI Chatbot Builder 🤖
+Check out the ChatSynth github account where all the generated repositories are hosted: [ChatSynth](https://github.com/ChatSynth)
+
 Check out the deployed app here:
 
 [![Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatsynth.streamlit.app)
