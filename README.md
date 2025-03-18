@@ -38,4 +38,5 @@ The created GitHub repository will contain further instructions, but basically y
 Contributions are welcome, open an issue on the repository or get in contact through any socials.
 
 ## 📄 License
-© [Vanshaj Raghuvanshi](https://github.com/VanshajR)
+BSD License © [Vanshaj Raghuvanshi](https://github.com/VanshajR)
+Please refrain from copying without accrediting.

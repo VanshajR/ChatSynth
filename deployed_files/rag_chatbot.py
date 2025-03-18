@@ -47,6 +47,8 @@ def chat_assistant():
     with st.sidebar:
         st.header("⚙️ Settings")
         model_name = st.selectbox("🤖 Choose LLM Model:", ["Llama3-70b-8192", "mixtral-8x7b-32768"])
+        st.write("Powered By ChatSynth")
+        st.write("https://chatsynth.streamlit.app")
 
     # Initialize chat session
     if "chat_messages" not in st.session_state:
