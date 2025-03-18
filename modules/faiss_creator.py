@@ -63,6 +63,16 @@ def faiss_creator():
             for link in user_data.get("social_links", []):
                 docs.append(f"{link['platform']}: {link['url']}")
 
+            for achievement in user_data.get("achievements", []):
+                doc_lines = [
+                    f"Achievement: {achievement['title']}",
+                    f"Date: {achievement['date']}",
+                    f"Description: {achievement['description']}"
+                ]
+                if achievement.get("link"):
+                    doc_lines.append(f"Link: {achievement['link']}")
+                docs.append("\n".join(doc_lines))
+
             text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
             final_docs = text_splitter.create_documents(docs)
             
