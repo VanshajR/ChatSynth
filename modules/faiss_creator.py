@@ -6,7 +6,7 @@ from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 def faiss_creator():
-    st.title("Step 2: Create FAISS Index")
+    st.title("Step 2: 📇 Create FAISS Index")
     
     if "generated_json" not in st.session_state:
         st.warning("Please complete Step 1 first!")

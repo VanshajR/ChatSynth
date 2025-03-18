@@ -81,7 +81,7 @@ def display_entries(session_key, fields, title):
         add_entry(session_key, {})
 
 def json_creator():
-    st.title("Step 1: Create Profile")
+    st.title("Step 1: 📃 Create Profile")
     
     st.header("Personal Information")
     name = st.text_input("Full Name *", value="").strip()
@@ -196,5 +196,6 @@ def json_creator():
                 mime="application/json"
             )
             
+            st.success("JSON generated successfully! Please proceed to step 2!")
         except Exception as e:
             st.error(f"Error generating JSON: {e}")
