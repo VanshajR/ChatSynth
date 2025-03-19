@@ -1,7 +1,7 @@
-from modules.json_creator import json_creator
-from modules.faiss_creator import faiss_creator
-from modules.chat_preview import chat_preview
-from modules.github_deploy import github_deploy
+from chatsynth_vanshajr.json_creator import json_creator
+from chatsynth_vanshajr.faiss_creator import faiss_creator
+from chatsynth_vanshajr.chat_preview import chat_preview
+from chatsynth_vanshajr.github_deploy import github_deploy
 import streamlit as st
 
 def main():
