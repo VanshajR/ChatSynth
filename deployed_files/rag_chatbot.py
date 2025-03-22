@@ -5,6 +5,8 @@ from langchain_groq import ChatGroq
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains import create_retrieval_chain
+from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from chatsynth_vanshajr.retriever import ChatSynthRetriever
 
 def chat_assistant():
@@ -25,11 +27,14 @@ def chat_assistant():
         st.error(f"Error loading user profile: {str(e)}")
         return
     
-    # Ensure FAISS index exists
-    if not os.path.exists("faiss_index"):
-        st.error("FAISS index not found! Please generate the FAISS index first.")
-        return
-    
+    # Load FAISS index only once and store it in session state
+    if "faiss_vectors" not in st.session_state:
+        try:
+            embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+            st.session_state.faiss_vectors = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+        except Exception as e:
+            st.error(f"Error loading FAISS index: {str(e)}")
+            return
     
     # Set up UI
     st.set_page_config(page_title=f"{user_name}'s Chatbot", page_icon="🤖")
@@ -51,7 +56,7 @@ def chat_assistant():
         st.chat_message(msg["role"]).write(msg["content"])
 
     # Create RAG chain
-    retriever = ChatSynthRetriever().get_retriever()
+    retriever = ChatSynthRetriever(st.session_state.faiss_vectors).get_retriever()
 
     prompt_template = ChatPromptTemplate.from_template("""
         You are an AI assistant created to answer questions about {name}. You are **not** {name}, but you use the provided context to give accurate responses.

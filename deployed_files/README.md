@@ -31,7 +31,8 @@ Now that you have the files for the chatbot ready, it's time to deploy it online
    Click "Deploy" - your AI assistant will be live in minutes!
 
 ## 📂 Project Structure
-This is what the structure of the repositiry should look like:
+This is what the structure of the repository should look like:
+(This structure was made using the python package `branchify`, check it out!)
 ```
 <Name>/
 ├── faiss_index/
