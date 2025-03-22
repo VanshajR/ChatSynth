@@ -36,6 +36,8 @@ Create personalized Q&A AI chatbots in 3 easy steps:
 ## ↗️ Next Steps
 The created GitHub repository will contain further instructions, but basically you have to fork the repository or download the code to then deploy it online, and provide streamlit secrets when you do.
 
+## 📽️ Demo Video
+![ChatSynrhDemo](demo.gif)
 ## 🤝 Contributing
 Contributions are welcome, open an issue on the repository or get in contact through any socials.
 
