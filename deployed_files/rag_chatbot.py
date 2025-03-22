@@ -43,7 +43,7 @@ def chat_assistant():
     # Sidebar settings
     with st.sidebar:
         st.header("⚙️ Settings")
-        model_name = st.selectbox("🤖 Choose LLM Model:", ["Llama3-70b-8192", "mixtral-8x7b-32768"])
+        model_name = st.selectbox("🤖 Choose LLM Model:", ["Llama3-70b-8192", "gemma2-9b-it", "mixtral-8x7b-32768"])
         st.write("Powered By ChatSynth")
         st.write("https://chatsynth.streamlit.app")
 
