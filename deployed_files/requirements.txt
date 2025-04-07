@@ -6,3 +6,5 @@ langchain-huggingface
 langchain-groq
 langchain
 chatsynth_vanshajr
+accelerate
+transformers

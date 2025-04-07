@@ -7,3 +7,5 @@ langchain-groq
 langchain-huggingface
 requests
 chatsynth_vanshajr
+accelerate
+transformers
