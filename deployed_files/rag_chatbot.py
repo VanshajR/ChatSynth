@@ -9,7 +9,6 @@ from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from chatsynth_vanshajr.retriever import ChatSynthRetriever
 
-
 def chat_assistant():
     # Load secrets
     try:
@@ -32,7 +31,9 @@ def chat_assistant():
     if "faiss_vectors" not in st.session_state:
         try:
             embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-            st.session_state.faiss_vectors = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+            st.session_state.faiss_vectors = FAISS.load_local(
+                "faiss_index", embeddings, allow_dangerous_deserialization=True
+            )
         except Exception as e:
             st.error(f"Error loading FAISS index: {str(e)}")
             return
@@ -44,7 +45,10 @@ def chat_assistant():
     # Sidebar settings
     with st.sidebar:
         st.header("⚙️ Settings")
-        model_name = st.selectbox("🤖 Choose LLM Model:", ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "openai/gpt-oss-20b)
+        model_name = st.selectbox(
+            "🤖 Choose LLM Model:", 
+            ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "openai/gpt-oss-20b"] # <-- FIXED: Added missing closing bracket
+        )
         st.write("Powered By ChatSynth")
         st.write("https://chatsynth.streamlit.app")
 
@@ -78,7 +82,14 @@ def chat_assistant():
     """)
 
     llm = ChatGroq(model_name=model_name, api_key=groq_key)
-    chain = create_retrieval_chain(retriever, create_stuff_documents_chain(llm, prompt_template))
+    
+    # This document chain is correct. It expects 'context' and other keys.
+    document_chain = create_stuff_documents_chain(llm, prompt_template)
+    
+    # This retrieval chain is also correct. It will take "input",
+    # pass it to the retriever, get documents, and put them into
+    # the "context" key for the document_chain.
+    chain = create_retrieval_chain(retriever, document_chain)
 
     # Handle user input
     if prompt := st.chat_input("Ask me anything..."):
@@ -87,25 +98,32 @@ def chat_assistant():
 
         try:
             with st.spinner("Thinking..."):
-                # Retrieve relevant documents from FAISS
-                retrieved_docs = retriever.get_relevant_documents(prompt)
+                
+                # --- REMOVED SECTION ---
+                # We no longer need to retrieve documents manually.
+                # The 'chain' does this for us.
+                # 
+                # retrieved_docs = retriever.get_relevant_documents(prompt)
+                #
+                # if not retrieved_docs:
+                #    st.warning("No relevant context found in FAISS!...")
+                # --- END REMOVED SECTION ---
 
-                # Check if context exists
-                if not retrieved_docs:
-                    st.warning("No relevant context found in FAISS! The chatbot may not provide a good answer.")
-
-                # Get conversation history
+                # Get conversation history (your string formatting is fine)
                 history = "\n".join(
                     [f"{msg['role']}: {msg['content']}" 
                      for msg in st.session_state.chat_messages[-5:]]
                 )
 
+                # --- MODIFIED INVOKE CALL ---
+                # We only need to pass the keys the prompt expects, *except* 'context'.
+                # The retrieval_chain handles 'context' automatically.
                 response = chain.invoke({
                     "input": prompt,
                     "history": history,
-                    "name": user_name,
-                    "context": "\n\n".join([doc.page_content for doc in retrieved_docs])
+                    "name": user_name
                 })
+                # --- END MODIFIED INVOKE CALL ---
 
                 answer = response.get("answer", "I don't have that information.")
 
