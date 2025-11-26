@@ -9,3 +9,4 @@ requests
 chatsynth_vanshajr
 accelerate
 transformers
+sentence-transformers
