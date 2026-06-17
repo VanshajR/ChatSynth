@@ -49,7 +49,7 @@ def chat_assistant():
     with st.sidebar:
         st.header("⚙️ Settings")
         # Updated model list
-        model_name = st.selectbox("🤖 Choose LLM Model:", ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "gpt-oss-20b"])
+        model_name = st.selectbox("🤖 Choose LLM Model:", ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "openai/gpt-oss-20b"])
         st.write("Powered By ChatSynth")
         st.write("https://chatsynth.streamlit.app")
 
